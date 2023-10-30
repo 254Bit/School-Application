@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:university_app/home.dart';
+//import 'package:university_app/side_menu.dart';
+import 'package:university_app/home_screen.dart';
 import 'package:university_app/screens/log_in.dart';
 import 'package:university_app/screens/register.dart';
 import 'package:university_app/screens/library.dart';
+import 'package:university_app/splash_screen.dart';
+import 'package:university_app/trial_side_bar.dart';
 //import 'package:university_app/screens/home.dart';
+import 'package:university_app/splash_screen.dart';
 
 void main() {
   runApp(
@@ -22,7 +26,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.amber,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: HomeScreen(),
+      home: SplashScreen(),
+      //drawer: const SideBar(),
 
       debugShowCheckedModeBanner: false,
       //color: Color.fromARGB(255, 2, 52, 28),

@@ -4,91 +4,97 @@
 import 'package:flutter/material.dart';
 import 'package:university_app/screens/log_in.dart';
 
-class Register extends StatelessWidget {
+class Register extends StatefulWidget {
+  @override
+  State<Register> createState() => _RegisterState();
+}
+
+class _RegisterState extends State<Register> {
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Register With Us'),
+        centerTitle: true,
+        elevation: 0.0,
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-        const Icon(
-          Icons.abc_outlined,
-          color: Colors.amber,
-          size: 24.0,
-        ),
-    
-         const Padding(
-          padding: EdgeInsets.all(25.0),
-          child: TextField(
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'Enter Your Email Address',
-            ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+          const Icon(
+            Icons.abc_outlined,
+            color: Colors.amber,
+            size: 24.0,
           ),
-        ),
-         const Padding(
-          padding: EdgeInsets.all(25.0),
-          child: TextField(
-            decoration: InputDecoration(
-                hintText: 'Enter Your Surname',
-                contentPadding: EdgeInsets.symmetric(vertical: 10),
-                border: OutlineInputBorder(),
-                labelText: 'Enter Your Surname'),
-          ),
-        ),
-
-        const Padding(
-          padding: EdgeInsets.all(25.0),
-          child: TextField(
-            decoration: InputDecoration(
-                hintText: 'Enter Your First Name',
-                contentPadding: EdgeInsets.symmetric(vertical: 10),
-                border: OutlineInputBorder(),
-                labelText: 'Enter Your First Name'),
-          ),
-        ),
-
-         const Padding(
-          padding: EdgeInsets.all(25.0),
-          child: TextField(
-            decoration: InputDecoration(
-                hintText: 'Create Your Password',
-                contentPadding: EdgeInsets.symmetric(vertical: 10),
-                border: OutlineInputBorder(),
-                labelText: 'Create Your Password'),
-          ),
-        ),
-          const Padding(
-          padding: EdgeInsets.all(25.0),
-          child: TextField(
-            decoration: InputDecoration(
-                hintText: 'Confirm Password',
-                contentPadding: EdgeInsets.symmetric(vertical: 10),
-                border: OutlineInputBorder(),
-                labelText: 'Confirm Password'),
-          ),
-        ),
-        Padding(
-            padding: EdgeInsets.all(.0),
-            child: ElevatedButton(
-              child: Text(
-                'Register',
-                style: TextStyle(color: Colors.amber),
-              ),
-              onPressed: () {},
-            ),
-          ),
-
-               SizedBox(height:10),
-               const  Text('Have an account? Sign in instead',
-               style: TextStyle(color:Colors.amber),
-               )
-         
           
-        ], 
+           const SizedBox(
+              height: 100, width: 300,
+              child: TextField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Enter Your Email Address',
+                ),
+              ),
+            ),
+          
+           const SizedBox(
+              height: 100, width: 300,
+              child: TextField(
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Enter Your Surname'),
+              ),
+            ),
+          
+      
+          const SizedBox(
+              height: 100, width: 300,
+              child: TextField(
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Enter Your First Name'),
+              ),
+            ),
+          
+      
+           const SizedBox(
+              height: 100, width: 300,
+              child: TextField(
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Create Your Password'),
+              ),
+            ),
+          
+            
+            const SizedBox(
+              height: 100, width: 300,
+              child: TextField(
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Confirm Password'),
+              ),
+            ),
+          
+          ElevatedButton(
+                child: Text(
+                  'Register',
+                  style: TextStyle(color: Colors.amber),
+                ),
+                onPressed: () {},
+              ),
+      
+                 const SizedBox(width: 300),
+                 const  Text('Have an account? Sign in instead',
+                 style: TextStyle(color:Colors.amber),
+                 )
+           
+            
+          ], 
+        ),
       ),
     );
 
