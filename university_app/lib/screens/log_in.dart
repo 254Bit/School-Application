@@ -2,6 +2,7 @@
 //Container, Align, Padding, Text, TextField, Center, Column, Row, TextAlign, Scaffold, Icon, Button, Image, Card, Navigator
 
 import 'package:flutter/material.dart';
+import 'package:university_app/home_screen.dart';
 import 'package:university_app/screens/register.dart';
 
 class LogIn extends StatefulWidget {
@@ -69,8 +70,9 @@ class _LogInState extends State<LogIn> {
               ),
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => Register(),
-                ));
+                  builder: (context) => const HomeScreen(),
+                )
+                );
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(
                     content: Text('Login Successful'),

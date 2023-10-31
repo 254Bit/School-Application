@@ -13,8 +13,8 @@ class _AboutState extends State<About> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: const Center(child:
-       Text('Universtiy of The People'),
+      child: Center(child:
+       Text("The People's University"),
       ),
     );
   }

@@ -26,7 +26,7 @@ class _RegisterState extends State<Register> {
           children: [
           const Icon(
             Icons.abc_outlined,
-            color: Colors.amber,
+            color: Color.fromARGB(255, 6, 1, 41),
             size: 24.0,
           ),
           
@@ -45,7 +45,7 @@ class _RegisterState extends State<Register> {
               child: TextField(
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: 'Enter Your Surname'),
+                    labelText: 'Enter Your Full Name'),
               ),
             ),
           
@@ -55,7 +55,7 @@ class _RegisterState extends State<Register> {
               child: TextField(
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: 'Enter Your First Name'),
+                    labelText: 'Enter Your Phone Number'),
               ),
             ),
           
@@ -80,7 +80,7 @@ class _RegisterState extends State<Register> {
             ),
           
           ElevatedButton(
-                child: Text(
+                child: const Text(
                   'Register',
                   style: TextStyle(color: Colors.amber),
                 ),

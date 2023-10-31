@@ -13,43 +13,21 @@ class _MyHeaderDrawerState extends State<MyHeaderDrawer> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.amber,
-      width: double.infinity,
-      height: 400,
-      padding: EdgeInsets.only(top: 10.0),
-      child: Column
-     // mainAxisAlignment: MainAxisAlignment.center,
-      (children: [
-        Container(
-          margin:EdgeInsets.only(bottom:5),
-          //height: 20,
-          decoration: const BoxDecoration(
-            shape:BoxShape.circle,
-            image:DecorationImage(image: AssetImage('assets/Designer.jpg'),
-            ),
-          ),
-
-
-        ),
-        const UserAccountsDrawerHeader(accountName: Text('Scholar :-)',
-        style: TextStyle(color:Colors.black, fontSize:20, fontWeight:FontWeight.bold),), 
-        accountEmail: Text('scholar@peopleuniversity.co.ke',style: TextStyle(color:Colors.black, fontSize:10, fontWeight:FontWeight.bold),)
-        ),
-        // const CircleAvatar(
-        //     //radius: 30.0,
-        //     //backgroundImage: AssetImage('assets/Designer.jpg'),
-        //     child: SizedBox(
-        //     width: 20,
-        //     height: 20,
-        //     child: ClipOval(
-        //       //child: Image.asset('assets/images/Designer.jpg'),
-        //       ),
-        //     ),
-            
-        //     ),
-            
-]
-      )
+      //color: const Color.fromARGB(255, 7, 3, 33),
+        width: double.infinity,
+        height: 250,
+      // padding: EdgeInsets.only(top: 10.0),
+      // margin:EdgeInsets.only(bottom:5),
+      // // decoration: const BoxDecoration(
+      // // shape:BoxShape.circle,
+      // //  image:DecorationImage(image: AssetImage('assets/Designer.jpg'),
+      // //        ),
+      // //      ),
+      child: const UserAccountsDrawerHeader(accountName: Text('Scholar :-)',
+        style: TextStyle(color:Colors.white, fontSize:20, fontWeight:FontWeight.bold,letterSpacing: 2.0),), 
+        accountEmail: Text('scholar@peopleuniversity.co.ke',
+        style: TextStyle(color:Colors.white, fontSize:10, fontWeight:FontWeight.bold, letterSpacing: 2.0),)
+        )
 
     );
     

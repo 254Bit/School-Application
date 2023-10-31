@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:university_app/screens/library.dart';
 import 'package:university_app/side_menu.dart';
 import 'package:university_app/screens/about.dart';
+import 'package:university_app/bottom_navbar/nav_model.dart';
+import 'package:university_app/bottom_navbar/nav_bar.dart';
+//import 'package: university_app/bottom_navbar/bottomapp.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -11,7 +14,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  var currentPage = DrawerSections.dashboard;
+  
+
+  var currentPage = DrawerSections;
+
   @override
   Widget build(BuildContext context) {
     var container;
@@ -21,29 +27,34 @@ class _HomeScreenState extends State<HomeScreen> {
       container = const About();
     }
     // } else if {
-    //   currentPage == DrawerSections.library;
+    //   currentPage == DrawerSections.settings;
     // }
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.amber,
-        title: const Text('Welcome Home'),
+        backgroundColor: Color.fromARGB(255, 40, 7, 226),
+        title: const Text("The People's University",
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+                letterSpacing: 2.0)),
       ),
-      body:
-      Container(
-          child: const Center(
-        child: Text('Home Page, shall have images, animation, etc etc. small information'),
+      body: Container(
+        child: const Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Center(
+            child: Text(
+                'Home Page, shall have images, animation, etc etc. pieces of information'),
+          ),
+        ),
       ),
-      ),
-
       drawer: Drawer(
         child: SingleChildScrollView(
-          child: Container(
-            child: Column(
-              children: [
-                const MyHeaderDrawer(),
-                myDrawerList(),
-              ],
-            ),
+          child: Column(
+            children: [
+              const MyHeaderDrawer(),
+              myDrawerList(),
+            ],
           ),
         ),
       ),
@@ -52,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget myDrawerList() {
     return Container(
-      padding: EdgeInsets.only(
+      padding: const EdgeInsets.only(
         top: 15,
       ),
       child: Column(
@@ -90,12 +101,12 @@ class _HomeScreenState extends State<HomeScreen> {
           });
         },
         child: Padding(
-          padding: EdgeInsets.all(15.0),
+          padding: EdgeInsets.all(10.0),
           child: Row(
             children: [
-              const Expanded(
+              Expanded(
                 child: Icon(
-                  Icons.abc,
+                  icon,
                   //size: 20,
                   color: Colors.black,
                 ),
@@ -114,9 +125,11 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
+// enum is a special kind of class.
 enum DrawerSections {
   dashboard,
   library,
   about,
   settings,
 }
+
