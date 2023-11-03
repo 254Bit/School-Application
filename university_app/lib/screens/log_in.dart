@@ -4,6 +4,7 @@
 import 'package:flutter/material.dart';
 import 'package:university_app/home_screen.dart';
 import 'package:university_app/screens/register.dart';
+// import 'package:university_app/side_menu.dart'
 
 class LogIn extends StatefulWidget {
   // static const mySnackBar = SnackBar(
@@ -30,7 +31,7 @@ class _LogInState extends State<LogIn> {
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             const Icon(
               Icons.person,
-              color: Colors.amber,
+              color: Colors.blue,
               size: 90.0,
             ),
             const SizedBox(
@@ -66,7 +67,7 @@ class _LogInState extends State<LogIn> {
             ElevatedButton(
               child: const Text(
                 'LogIn',
-                style: TextStyle(color: Colors.amber),
+                style: TextStyle(color: Colors.blue),
               ),
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(
@@ -76,7 +77,7 @@ class _LogInState extends State<LogIn> {
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(
                     content: Text('Login Successful'),
-                    backgroundColor: Colors.amber,
+                    backgroundColor: Colors.blue,
                   ),
                 );
               },
@@ -87,7 +88,7 @@ class _LogInState extends State<LogIn> {
             ),
             const Text(
               'Dont have an account?',
-              style: TextStyle(color: Colors.amber),
+              style: TextStyle(color: Colors.blue),
             )
           ]),
         ),

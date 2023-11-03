@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:university_app/screens/library.dart';
-import 'package:university_app/side_menu.dart';
-import 'package:university_app/screens/about.dart';
 import 'package:university_app/bottom_navbar/nav_model.dart';
 import 'package:university_app/bottom_navbar/nav_bar.dart';
-//import 'package: university_app/bottom_navbar/bottomapp.dart';
+import 'package:university_app/screens/events.dart';
+import 'package:university_app/screens/register.dart';
 
-class HomeScreen extends StatefulWidget {
+ class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
@@ -14,122 +12,129 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  
+  final homeNavKey = GlobalKey<NavigatorState>();
+  final searchNavKey = GlobalKey<NavigatorState>();
+  int selectedTab = 0;
+  List items = [
+    Events(),
+    Register(),
+   ];
+    @override
+  void initState() {
+    super.initState();
+    items = [
+      NavModel(
+        page: const TabPage(tab: 1),
+        navKey: homeNavKey,
+      ),
+      NavModel(
+        page: const TabPage(tab: 2),
+        navKey: searchNavKey,
+      ),
+    ];
+  }
 
-  var currentPage = DrawerSections;
 
   @override
   Widget build(BuildContext context) {
-    var container;
-    if (currentPage == DrawerSections.library) {
-      container = Library();
-    } else if (currentPage == DrawerSections.about) {
-      container = const About();
-    }
-    // } else if {
-    //   currentPage == DrawerSections.settings;
-    // }
+    return WillPopScope(
+      onWillPop: () {
+        if (items[selectedTab].navKey.currentState?.canPop() ?? false) {
+          items[selectedTab].navKey.currentState?.pop();
+          return Future.value(false);
+        } else {
+          return Future.value(true);
+        }
+      },
+      child: Scaffold(
+        body:IndexedStack(
+          index: selectedTab,
+          children: items
+          .map((page) => Navigator(
+            key:page.navKey,
+            onGenerateInitialRoutes: (navigator, initialRoute){
+              return[
+                MaterialPageRoute(builder: (context) => page.page)
+              ];
+            },
+
+            ),
+            )
+            .toList(),
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButton: Container(
+          margin: const EdgeInsets.only(top:10),
+          height:64,
+          width: 64,
+          child: FloatingActionButton(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          onPressed: () => debugPrint('Add Button Pressed'), 
+          shape: RoundedRectangleBorder( 
+            side: BorderSide(width: 3, color: Colors.blue),
+            borderRadius: BorderRadius.circular(100),
+            ),
+          child: const Icon(
+            Icons.add,color: Color.fromARGB(255, 2, 28, 50),
+
+
+          )
+
+          ),
+        ),
+        
+        bottomNavigationBar: NavBar(
+            pageIndex: selectedTab,
+            onTap: (index) {
+              if (index == selectedTab) {
+                items[index]
+                    .navKey
+                    .currentState
+                    ?.popUntil((route) => route.isFirst);
+              } else {
+                setState(() {
+                  selectedTab = index;
+                });
+              }
+            }),
+      ),
+    );
+  }
+  }
+  class TabPage extends StatelessWidget {
+  final int tab;
+  const TabPage({Key? key, required this.tab}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 40, 7, 226),
-        title: const Text("The People's University",
-            style: TextStyle(
-                color: Colors.white,
-                fontSize: 20.0,
-                fontWeight: FontWeight.bold,
-                letterSpacing: 2.0)),
-      ),
-      body: Container(
-        child: const Padding(
-          padding: EdgeInsets.all(8.0),
-          child: Center(
-            child: Text(
-                'Home Page, shall have images, animation, etc etc. pieces of information'),
-          ),
-        ),
-      ),
-      drawer: Drawer(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              const MyHeaderDrawer(),
-              myDrawerList(),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget myDrawerList() {
-    return Container(
-      padding: const EdgeInsets.only(
-        top: 15,
-      ),
-      child: Column(
-        children: [
-          //menuItem(),
-          menuItem(1, 'DashBoard', Icons.dashboard,
-              currentPage == DrawerSections.dashboard ? true : false),
-          menuItem(2, 'Library', Icons.library_books,
-              currentPage == DrawerSections.library ? true : false),
-          menuItem(3, 'About', Icons.info_rounded,
-              currentPage == DrawerSections.about ? true : false),
-          menuItem(4, 'Settings', Icons.settings,
-              currentPage == DrawerSections.settings ? true : false),
-          //  menuItem( 4, 'Log Out', Icons.logout,
-          // currentPage == DrawerSections.logout ? true: false),
-        ],
-      ),
-    );
-  }
-
-  Widget menuItem(int id, String heading, IconData icon, bool select) {
-    return Material(
-      //color: selected Colors.grey : Colors.transparent,
-      child: InkWell(
-        onTap: () {
-          Navigator.pop(context);
-          setState(() {
-            if (id == 1) {
-              currentPage == DrawerSections.dashboard;
-            } else if (id == 2) {
-              currentPage == DrawerSections.library;
-            } else if (id == 3) {
-              currentPage == DrawerSections.about;
-            }
-          });
-        },
-        child: Padding(
-          padding: EdgeInsets.all(10.0),
-          child: Row(
-            children: [
-              Expanded(
-                child: Icon(
-                  icon,
-                  //size: 20,
-                  color: Colors.black,
-                ),
+        body: Center(
+      child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+        Text('Tab $tab'),
+        ElevatedButton(
+          onPressed: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => Page(tab: tab),
               ),
-              Expanded(
-                //flex: 1,
-                child: Text(
-                  heading,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
+            );
+          },
+          child: const Text(''),
+        )
+      ]),
+    ));
   }
 }
 
-// enum is a special kind of class.
-enum DrawerSections {
-  dashboard,
-  library,
-  about,
-  settings,
-}
+class Page extends StatelessWidget {
+  final int tab;
+  const Page({super.key, required this.tab});
 
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(child: Text('Tab $tab')),
+    );
+  }
+}

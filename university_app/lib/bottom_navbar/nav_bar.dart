@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:university_app/bottom_navbar/nav_model.dart';
 import 'package:university_app/home_screen.dart';
+//import 'package:university_app/library.dart'
 
 
-class NavBar extends StatelessWidget {
+import 'package:university_app/screens/events.dart';class NavBar extends StatelessWidget {
   final int pageIndex;
   final Function(int) onTap;
 
@@ -26,11 +27,11 @@ class NavBar extends StatelessWidget {
                     color: Colors.blue,
                     child: Row(
                       children: [
-                        navItem(
-                          Icons.home_outlined,
-                          pageIndex == 0,
-                          onTap: () => onTap(1),
-                        ),
+                        navItem(Icons.home_outlined, pageIndex == 0, onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => Events(),
+                          ));
+                        }),
                         navItem(Icons.message_outlined, pageIndex == 1,
                             onTap: () => onTap(2)),
                         navItem(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:university_app/home_screen.dart';
+import 'package:university_app/screens/log_in.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -24,7 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
     //       MaterialPageRoute(builder: (BuildContext context) => HomeScreen()));
     // });
        Future.delayed(const Duration(seconds: 7), () {
-      Navigator.of(context).push(MaterialPageRoute(builder:(context) => const HomeScreen(),
+      Navigator.of(context).push(MaterialPageRoute(builder:(context) => const LogIn(),
       )
       );
   });
@@ -33,8 +34,11 @@ class _SplashScreenState extends State<SplashScreen> {
             child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
+        Positioned.fill(child: 
         Image.asset('assets/images/uop_1.png',
-        fit: BoxFit.fill,),
+        fit: BoxFit.fill,)
+        
+        ),
         // const SizedBox(
         //   height: 10,
         // ),

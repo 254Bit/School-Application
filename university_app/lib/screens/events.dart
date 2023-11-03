@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 //import 'package:university_app/side_menu.dart';
-import 'package:university_app/screens/library.dart';
+import 'package:university_app/screens/events.dart';
 
-class Library extends StatelessWidget {
+class Events extends StatelessWidget {
   var scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
